@@ -1,20 +1,25 @@
-
-let valor = prompt("Introduzca 1 para pasar a convertir un valor o 2 si quiere salir");
+let history=[];
+let valor=""
+while (valor !== "2") {
+    valor = prompt("1) Divisa (ARS->USD)\n2) Salir");
 function convertCurrency(pesos) {
     return pesos/1300;
     }
 switch (valor) {
     case "1":
-        let pesos = prompt("Introduzca en pesos la cantidad que quiere convertir");
+        let pesos = prompt("Introduzca en pesos la cantidad que quiere convertir"); 
         let calculo = convertCurrency(pesos);
-        let elcuco = {
+        let resultado = {
             tipo: "divisa",
-            entrada: "1300 ARS",
-            salida: "1 USD",
+            entrada: `${pesos} ARS`,
+            salida: `${calculo.toFixed(2)} USD`,
             fecha: new Date().toLocaleString()
         }
-        prompt("El resultado es:" ,calculo.toFixed(4));
+        history.push(resultado);
+        alert(`El resultado es: ${calculo.toFixed(2)} dólares`);
     break;
     default:
-        prompt("Usted no puede hacer eso. Usted se tiene que arrepentir");
+        prompt("Buen viaje");
+    }
+console.log("Historial de conversiones:" ,history,)
 }
